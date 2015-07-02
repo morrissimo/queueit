@@ -7,7 +7,6 @@ import time
 
 import beanstalkc
 
-from beanstalkc import * # TODO: remove it
 
 logging.basicConfig(level=logging.DEBUG, format=u'%(asctime)-15s %(name)-12s: %(levelname)-8s %(message)s')
 LOG = logging.getLogger('queueit')
@@ -44,11 +43,7 @@ except ValueError:
 
 
 def _get_qconnection(host, port):
-    try:
-        return Connection(host=host, port=port)
-    except SocketError:
-        print "Can't connect to %s:%s" % (host, port)
-        sys.exit(1)
+    return beanstalkc.Connection(host=host, port=port)
 
 
 def qget(tube_name, qconn=None):

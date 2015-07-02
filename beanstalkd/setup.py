@@ -2,10 +2,14 @@ from setuptools import setup
 
 setup(
     name="queueit",
-    version="1.1",
+    version="1.2",
     author="Anton P. Linevich",
 
     packages=['queueit'],
+
+    install_requires=[
+        'beanstalkc',
+    ],
 
     entry_points={
         'console_scripts': [
